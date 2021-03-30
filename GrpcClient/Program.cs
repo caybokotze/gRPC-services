@@ -20,7 +20,7 @@ namespace GrpcClient
             {
                 var reply = await client.SayHelloAsync(
                     new HelloRequest { Name = "GreeterClient" });
-                Console.WriteLine("Greeting: " + reply.Message);
+                // Console.WriteLine("Greeting: " + reply.Message);
             }
             
             timer.Stop();
