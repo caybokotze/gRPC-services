@@ -16,7 +16,7 @@ namespace GrpcClient
             var timer = new Stopwatch();
             timer.Start();
             
-            for (var i = 0; i < 1_000; i++)
+            for (var i = 0; i < 10_000; i++)
             {
                 var reply = await client.SayHelloAsync(
                     new HelloRequest { Name = "GreeterClient" });
