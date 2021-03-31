@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace HttpWebHost.Controllers
 {
@@ -13,10 +8,14 @@ namespace HttpWebHost.Controllers
     {
         [HttpPost]
         [Route("/")]
-        public string Post(MessagePayload content)
+        public HttpResponse Post(HttpRequest content)
         {
             var fakeName = Faker.Name.FullName();
-            return $"Hello {fakeName} from {content.Name}";
+            
+            return new HttpResponse()
+            {
+                Message = $"Hello {fakeName} from {content.Name}"
+            };
         }
     }
 }

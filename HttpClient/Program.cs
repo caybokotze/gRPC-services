@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Net.Http;
 using RestSharp;
 
 namespace HttpClient
 {
     class Program
     {
+        class HttpResponse
+        {
+            public string Message { get; set; }
+        }
+        
         static void Main(string[] args)
         {
             var client = new RestClient("https://localhost:5001/");
@@ -21,8 +25,10 @@ namespace HttpClient
 
                 request.AddParameter("application/json", payload, ParameterType.RequestBody);
                 
-                var response = client.Execute(request);
-                Console.WriteLine(response.Content);
+                var response = client.Execute<HttpResponse>(request);
+                var httpResponse = response.Data;
+
+                Console.WriteLine(httpResponse.Message);
             }
             
             timer.Stop();
